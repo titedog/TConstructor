@@ -11,7 +11,8 @@ using System.Runtime.InteropServices;
 using Microsoft.VisualBasic;
 using System.IO;
 using System.Diagnostics;
-using DiscordRPC;
+using TConstructor.DiscordRpcDemo;
+using TConstructor.Properties;
 
 namespace TConstructor
 {
@@ -19,6 +20,9 @@ namespace TConstructor
     {
         //vars
         bool action;
+
+        private DiscordRpc.EventHandlers handlers;
+        private DiscordRpc.RichPresence presence;
 
         protected override void WndProc(ref Message m) //No idea how it works, but it allows a form with no formstyle to be moved
         {
@@ -34,7 +38,6 @@ namespace TConstructor
         {
             InitializeComponent(); //init form
         }
-
         private void Form1_Load(object sender, EventArgs e) //init form load
         {
             string dir = @"C:\TConstructorWorkspaces"; //directory for tconstructor workspaces
@@ -58,6 +61,14 @@ namespace TConstructor
             //
             //   File.WriteAllLines(@"C:\TConstructorWorkspaces\properties.txt", lines); //writer system - writes properties.txt (settings file)
             //}
+
+            // [DISCORD RICH PRESENCE]
+            this.handlers = default(DiscordRpc.EventHandlers); //ref handlers
+            DiscordRpc.Initialize("798631066687897640", ref this.handlers, true, null); //initialize discord rich presence
+            this.presence.details = "Creating a Mod"; //details text
+            this.presence.state = "Home Screen"; //state text
+            this.presence.largeImageKey = "tcon_rpc_logo"; //large image key
+            DiscordRpc.UpdatePresence(ref this.presence); //updates presence
 
             if (File.Exists(@"C:\TConstructorWorkspaces\workspaces.txt")) //this is a better check than using the code above which creates properties.txt
             {
@@ -90,6 +101,30 @@ namespace TConstructor
                     }
                 }
             }
+
+            bool showSplashText = (bool)Settings.Default["SplashTextEnabled"];
+
+            if (showSplashText == true)
+            {
+                string[] splashes ={
+                            "Try MCreator!",
+                            "Supercalifragilisticexpialadosus!",
+                            "Icouldntthinkofasplashtextsoiputthishere!",
+                            "C# gang!",
+                            "Thank you to Shadowdragon for contributing the program!",
+                            "Thank you to wildwillpill for contributing the program!",
+                            "Thank you to Uraneptus for contributing the program!",
+                            "Thank you to Patosalvaje for contributing the program!",
+                            "Note that you can add more splash texts by editing this file!",
+                            "Bazinga!",
+                            "Hi, I'm elfo!",
+                            "Try our new Potato Radios!",
+                            "Quantum physics, baby!"
+                          };
+                Random rand = new Random();
+                int index = rand.Next(splashes.Length);
+                this.Text = "TConstructor: " + splashes[index];
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -116,6 +151,9 @@ namespace TConstructor
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            // [DISCORD RICH PRESENCE]
+            DiscordRpc.Shutdown();
+
             Application.Exit(); //this code is for the x button to close the entire application, including other open forms
         }
 
@@ -150,8 +188,17 @@ namespace TConstructor
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
             var selectedItem = listBox1.SelectedItem.ToString(); //selectedItem in listbox
-            if(Directory.Exists(@"C:\TConstructorWorkspaces\" + selectedItem)) //check to make sure nobody has edited properties.txt
+            if (Directory.Exists(@"C:\TConstructorWorkspaces\" + selectedItem)) //check to make sure nobody has edited properties.txt
             {
+                // [DISCORD RICH PRESENCE]
+                this.handlers = default(DiscordRpc.EventHandlers); //ref handlers
+                DiscordRpc.Initialize("798631066687897640", ref this.handlers, true, null); //initialize discord rich presence
+                this.presence.details = "Creating a Mod"; //details text
+                this.presence.state = selectedItem; //state text
+                this.presence.largeImageKey = "tcon_rpc_logo"; //large image key
+                this.presence.smallImageKey = "baseline_build_white";
+                DiscordRpc.UpdatePresence(ref this.presence); //updates presence
+
                 new WorkspaceManager(selectedItem).Show(); //open workspace
                 this.Hide(); //hide Form1
             }
@@ -170,7 +217,8 @@ namespace TConstructor
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            
+            new SettingsWindow().Show();
+            this.Hide();
         }
     }
 }

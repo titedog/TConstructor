@@ -133,9 +133,19 @@ namespace TConstructor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Pattern {
+        internal static System.Drawing.Bitmap baseline_toggle_off_black_18dp {
             get {
-                object obj = ResourceManager.GetObject("Pattern", resourceCulture);
+                object obj = ResourceManager.GetObject("baseline_toggle_off_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_toggle_on_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_toggle_on_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,16 +203,6 @@ namespace TConstructor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tcon_logo {
-            get {
-                object obj = ResourceManager.GetObject("tcon_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap tcon_pattern_final {
             get {
                 object obj = ResourceManager.GetObject("tcon_pattern_final", resourceCulture);
@@ -213,29 +213,9 @@ namespace TConstructor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tconstructor_logo {
-            get {
-                object obj = ResourceManager.GetObject("tconstructor_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap tconstructor_logo_final {
             get {
                 object obj = ResourceManager.GetObject("tconstructor_logo_final", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap tconstructor_logo_final_final {
-            get {
-                object obj = ResourceManager.GetObject("tconstructor_logo_final_final", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

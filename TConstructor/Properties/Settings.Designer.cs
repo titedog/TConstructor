@@ -22,5 +22,29 @@ namespace TConstructor.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ExperimentalMode {
+            get {
+                return ((bool)(this["ExperimentalMode"]));
+            }
+            set {
+                this["ExperimentalMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SplashTextEnabled {
+            get {
+                return ((bool)(this["SplashTextEnabled"]));
+            }
+            set {
+                this["SplashTextEnabled"] = value;
+            }
+        }
     }
 }

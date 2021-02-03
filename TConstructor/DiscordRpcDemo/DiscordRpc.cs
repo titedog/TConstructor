@@ -104,4 +104,3 @@ namespace TConstructor.DiscordRpcDemo
         }
     }
 }
-}
